@@ -47,6 +47,12 @@ Watch a particle escape from a metastable well through the energy landscape:
 - Thermal noise enables the escape despite the energy barrier
 - This single transition would take ~22,000 time units on average!
 
+**Note:** The animation is stored using Git LFS due to its size (64 MB). If the GIF doesn't load, you can generate it locally:
+```bash
+cd scripts
+python create_3d_animation.py
+```
+
 For more visualizations, see the `plots/` directory:
 - `3d_transition_static.png` - High-quality static 3D view
 - `3d_transition_multiview.png` - Multiple viewing angles
