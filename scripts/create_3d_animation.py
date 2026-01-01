@@ -1,13 +1,4 @@
-"""
-Create 3D Animation of Rare Transition
 
-This script generates an interactive 3D visualization showing:
-1. The potential energy surface
-2. A trajectory transitioning between wells
-3. Animated particle movement
-
-The output is saved as an HTML file that can be opened in a browser.
-"""
 
 import sys
 import os
