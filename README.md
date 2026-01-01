@@ -14,7 +14,7 @@ This project provides a rigorous, research-level implementation of numerical met
 dX_t = -∇V(X_t) dt + √(2ε) dW_t
 ```
 
-where:
+where:-
 - `V(x)` is a multi-well potential energy landscape
 - `ε ≪ 1` is the noise level (temperature)
 - `W_t` is standard Brownian motion
