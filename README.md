@@ -58,6 +58,12 @@ For more visualizations, see the `plots/` directory:
 - `3d_transition_multiview.png` - Multiple viewing angles
 - `master_summary.png` - Complete method comparison
 
+### Stochastic Swarm Dynamics
+
+Visualizing the collective behavior of 30 stochastic agents in a metastable potential. The particles (cyan) fluctuate in the left well until rare fluctuations allow them to transition to the right well (gold).
+
+![Stochastic Swarm Dynamics](plots/custom_swarm_study_mode.gif)
+
 ---
 
 ## Table of Contents
