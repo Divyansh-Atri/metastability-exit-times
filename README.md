@@ -64,6 +64,12 @@ Visualizing the collective behavior of 30 stochastic agents in a metastable pote
 
 ![Stochastic Swarm Dynamics](plots/custom_swarm_study_mode.gif)
 
+You can generate this animation locally (requires FFMpeg):
+```bash
+cd scripts
+python create_swarm_animation.py
+```
+
 ---
 
 ## Table of Contents
@@ -100,7 +106,7 @@ cd metastability-rare-events
 pip install numpy scipy matplotlib jupyter
 
 # Verify installation
-python -c "import src; print('Installation successful!')"
+python setup_check.py
 ```
 
 ---
@@ -118,7 +124,8 @@ metastability-rare-events/
 │   └── visualization.py               # Publication-quality plotting
 ├── scripts/
 │   ├── master_simulation.py           # Master demonstration
-│   └── create_3d_animation.py         # 3D visualization generator
+│   ├── create_3d_animation.py         # 3D visualization generator
+│   └── create_swarm_animation.py      # Stochastic swarm dynamics visualizer
 ├── notebooks/
 │   ├── 01_potential_landscapes.ipynb  # Potential energy surfaces
 │   ├── 02_naive_simulation.ipynb      # Why naive methods fail
@@ -128,10 +135,15 @@ metastability-rare-events/
 │   └── 06_master_simulation.ipynb     # Comprehensive demonstration
 ├── plots/                             # Generated figures
 │   ├── 3d_transition_animation.gif    # Animated 3D transition
+│   ├── custom_swarm_study_mode.gif    # Swarm dynamics animation
 │   ├── 3d_transition_static.png       # Static 3D visualization
 │   ├── 3d_transition_multiview.png    # Multiple viewing angles
 │   └── master_*.png                   # Simulation results
+├── Guide.md                           # Quick reference guide
+├── Notes.md                           # Development notes
+├── Overview.md                        # Project summary
 ├── README.md                          # This file
+├── setup_check.py                     # Installation verification script
 └── requirements.txt                   # Python dependencies
 ```
 
