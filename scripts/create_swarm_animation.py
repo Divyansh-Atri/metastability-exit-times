@@ -140,19 +140,25 @@ status_indicator = ax.text2D(0.95, 0.95, "System stable", transform=ax.transAxes
 
 
 # --- Particles Setting ---
-particles_scatter = ax.scatter([], [], [], s=50, c='white', edgecolors='white', alpha=1.0, depthshade=False)
-particles_glow = ax.scatter([], [], [], s=200, c='#66fcf1', alpha=0.2, depthshade=False, linewidth=0)
+particles_scatter = ax.scatter([], [], [], s=120, c='white', edgecolors='white', alpha=1.0, depthshade=False)
+particles_glow = ax.scatter([], [], [], s=350, c='#66fcf1', alpha=0.2, depthshade=False, linewidth=0)
 
 # Trails
 trails = []
 for i in range(N_PARTICLES):
-    t, = ax.plot([], [], [], '-', linewidth=1.0, alpha=0.4)
+    t, = ax.plot([], [], [], '-', linewidth=1.5, alpha=0.4)
     trails.append(t)
 
 # Limits & Camera
-ax.set_xlim(-2.5, 2.5)
-ax.set_ylim(-2.0, 2.0)
-ax.set_zlim(0, 4)
+# Zoomed-in framing for animation (closer camera and tighter axis limits)
+ax.set_xlim(-1.5, 1.5)
+ax.set_ylim(-1.0, 1.0)
+ax.set_zlim(0, 2.5)
+# Move the 3D camera closer for a stronger zoom effect (smaller = closer)
+try:
+    ax.dist = 7
+except Exception:
+    pass
 ax.set_axis_off()
 
 def update(frame):
