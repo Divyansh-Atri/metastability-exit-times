@@ -76,10 +76,10 @@ with a symmetric double-well potential in d=10 dimensions:
     V(x) = (x₁² - 1)² + ω² Σᵢ₌₂¹⁰ xᵢ²
 
 Parameters:
-  • Dimension: d = 10
-  • Barrier height: ΔV = 1.0
-  • Noise level: ε = 0.2
-  • Predicted mean exit time: τ ≈ exp(ΔV/ε) = exp(5) ≈ 148
+  - Dimension: d = 10
+  - Barrier height: ΔV = 1.0
+  - Noise level: ε = 0.2
+  - Predicted mean exit time: τ ≈ exp(ΔV/ε) = exp(5) ≈ 148
 
 THE CHALLENGE:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -135,7 +135,7 @@ by intelligently cloning successful trajectories.
     def basin_condition(x):
         return x[0] < -0.5
     
-    print("✓ Setup complete\n")
+    print("[OK] Setup complete\n")
     
     # =========================================================================
     # NAIVE MONTE CARLO (Limited demonstration)
@@ -147,9 +147,9 @@ by intelligently cloning successful trajectories.
 Naive Monte Carlo simply runs many independent trajectories until they exit.
 
 For this problem, the expected computational cost is:
-  • Steps per trajectory: ~14,800
-  • For 100 samples: ~1,480,000 steps
-  • Estimated time: ~30-60 seconds
+  - Steps per trajectory: ~14,800
+  - For 100 samples: ~1,480,000 steps
+  - Estimated time: ~30-60 seconds
 
 To demonstrate the method without excessive runtime, we'll run only 10 samples.
 This will give us a rough estimate but with high uncertainty.
@@ -169,7 +169,7 @@ This will give us a rough estimate but with high uncertainty.
     )
     t_naive = time() - t_start
     
-    print(f"✓ Naive Monte Carlo completed in {t_naive:.2f} seconds")
+    print(f"[OK] Naive Monte Carlo completed in {t_naive:.2f} seconds")
     print(f"\nResults:")
     print(f"  Trajectories run:    {naive_result.n_trajectories}")
     print(f"  Successful exits:    {naive_result.n_exits}")
@@ -181,9 +181,9 @@ This will give us a rough estimate but with high uncertainty.
         print(f"  Mean exit time:      {naive_stats.mean:.2f} ± {naive_stats.std:.2f}")
         print(f"  Coefficient of var:  {naive_stats.cv:.2f}")
     else:
-        print("  ⚠ No exits observed! (This demonstrates the problem)")
+        print("  [!!] No exits observed! (This demonstrates the problem)")
     
-    print(f"\n⚠ WARNING: With only {n_naive_samples} samples, uncertainty is very high!")
+    print(f"\n[!!] WARNING: With only {n_naive_samples} samples, uncertainty is very high!")
     print(f"   For reliable statistics, we would need ~100 samples.")
     print(f"   That would require ~{100 * naive_result.computational_cost / n_naive_samples:,.0f} steps")
     print(f"   and ~{100 * t_naive / n_naive_samples:.0f} seconds.")
@@ -234,7 +234,7 @@ This dramatically reduces computational cost while maintaining accuracy.
     )
     t_ams = time() - t_start
     
-    print(f"✓ AMS completed in {t_ams:.2f} seconds")
+    print(f"[OK] AMS completed in {t_ams:.2f} seconds")
     print(f"\nResults:")
     print(f"  Initial replicas:    {n_replicas}")
     print(f"  Successful exits:    {ams_result.n_exits}")
@@ -277,9 +277,9 @@ This dramatically reduces computational cost while maintaining accuracy.
         diff = abs(naive_stats.mean - ams_stats.mean)
         combined_std = np.sqrt(naive_stats.std**2 + ams_stats.std**2)
         if diff < 2 * combined_std:
-            print(f"\n✓ Methods agree within statistical uncertainty!")
+            print(f"\n[OK] Methods agree within statistical uncertainty!")
         else:
-            print(f"\n⚠ Methods differ (likely due to small naive MC sample size)")
+            print(f"\n[!!] Methods differ (likely due to small naive MC sample size)")
     
     # =========================================================================
     # VISUALIZATION
@@ -293,7 +293,7 @@ This dramatically reduces computational cost while maintaining accuracy.
     os.makedirs('../plots', exist_ok=True)
     
     # Figure 1: Potential landscape (2D projection)
-    print("  • Potential landscape...")
+    print("  - Potential landscape...")
     fig1, ax1 = plt.subplots(figsize=(8, 7))
     
     # For 2D visualization, create a 2D version of the potential
@@ -307,7 +307,7 @@ This dramatically reduces computational cost while maintaining accuracy.
     
     # Figure 2: Exit time distributions
     if ams_result.n_exits > 0:
-        print("  • Exit time distributions...")
+        print("  - Exit time distributions...")
         fig2, axes = plt.subplots(1, 2, figsize=(14, 5))
         
         # Naive MC
@@ -337,7 +337,7 @@ This dramatically reduces computational cost while maintaining accuracy.
         plt.close()
     
     # Figure 3: Sample trajectory
-    print("  • Sample trajectory...")
+    print("  - Sample trajectory...")
     
     # Generate one trajectory for visualization (2D projection)
     solver_2d = EulerMaruyama(potential_2d.grad_V, 2, epsilon)
@@ -357,7 +357,7 @@ This dramatically reduces computational cost while maintaining accuracy.
     plt.close()
     
     # Figure 4: Summary comparison
-    print("  • Summary comparison...")
+    print("  - Summary comparison...")
     fig4, axes = plt.subplots(2, 2, figsize=(14, 10))
     
     # Panel 1: Computational cost
@@ -405,22 +405,22 @@ This dramatically reduces computational cost while maintaining accuracy.
     ═══════════════════════════════════════
     
     Problem:
-      • Dimension: d = {dim}
-      • Barrier: ΔV = {barrier_height}
-      • Noise: ε = {epsilon}
-      • Theoretical τ: {np.exp(barrier_height/epsilon):.1f}
+      - Dimension: d = {dim}
+      - Barrier: ΔV = {barrier_height}
+      - Noise: ε = {epsilon}
+      - Theoretical τ: {np.exp(barrier_height/epsilon):.1f}
     
     Naive Monte Carlo:
-      • Samples: {naive_result.n_trajectories}
-      • Exits: {naive_result.n_exits}
-      • Cost: {naive_result.computational_cost:,} steps
-      • Time: {t_naive:.1f} sec
+      - Samples: {naive_result.n_trajectories}
+      - Exits: {naive_result.n_exits}
+      - Cost: {naive_result.computational_cost:,} steps
+      - Time: {t_naive:.1f} sec
     
     Adaptive Multilevel Splitting:
-      • Replicas: {n_replicas}
-      • Exits: {ams_result.n_exits}
-      • Cost: {ams_result.computational_cost:,} steps
-      • Time: {t_ams:.1f} sec
+      - Replicas: {n_replicas}
+      - Exits: {ams_result.n_exits}
+      - Cost: {ams_result.computational_cost:,} steps
+      - Time: {t_ams:.1f} sec
     
     Speedup: {naive_result.computational_cost/ams_result.computational_cost:.1f}×
     
@@ -438,11 +438,11 @@ This dramatically reduces computational cost while maintaining accuracy.
     plt.savefig('../plots/master_summary.png', dpi=300, bbox_inches='tight')
     plt.close()
     
-    print("\n✓ All figures saved to plots/")
-    print("  • master_potential.png")
-    print("  • master_exit_times.png")
-    print("  • master_trajectory.png")
-    print("  • master_summary.png")
+    print("\n[OK] All figures saved to plots/")
+    print("  - master_potential.png")
+    print("  - master_exit_times.png")
+    print("  - master_trajectory.png")
+    print("  - master_summary.png")
     
     # =========================================================================
     # CONCLUSION
@@ -458,25 +458,25 @@ KEY FINDINGS:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1. COMPUTATIONAL INFEASIBILITY OF NAIVE METHODS
-   • For rare events (ΔV/ε > 5), naive Monte Carlo requires exponentially
+   - For rare events (ΔV/ε > 5), naive Monte Carlo requires exponentially
      many samples
-   • Success rate decreases exponentially with barrier height
-   • Computational cost: O(exp(ΔV/ε))
+   - Success rate decreases exponentially with barrier height
+   - Computational cost: O(exp(ΔV/ε))
 
 2. DRAMATIC SPEEDUP FROM ADVANCED METHODS
-   • AMS achieves 10-1000× speedup over naive Monte Carlo
-   • Success rate approaches 100% through intelligent cloning
-   • Computational cost: O(poly(ΔV/ε))
+   - AMS achieves 10-1000× speedup over naive Monte Carlo
+   - Success rate approaches 100% through intelligent cloning
+   - Computational cost: O(poly(ΔV/ε))
 
 3. MAINTAINED ACCURACY
-   • Both methods (when successful) give statistically consistent results
-   • AMS provides better uncertainty quantification
-   • Theoretical predictions are verified
+   - Both methods (when successful) give statistically consistent results
+   - AMS provides better uncertainty quantification
+   - Theoretical predictions are verified
 
 4. SCALABILITY TO HIGH DIMENSIONS
-   • The advantage of AMS increases with dimension
-   • For d=50, naive MC becomes completely infeasible
-   • AMS remains computationally tractable
+   - The advantage of AMS increases with dimension
+   - For d=50, naive MC becomes completely infeasible
+   - AMS remains computationally tractable
 
 IMPLICATIONS:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -485,10 +485,10 @@ This project demonstrates that advanced rare-event methods are not just
 optimizations—they are ESSENTIAL for studying metastable systems.
 
 Applications include:
-  • Molecular dynamics (protein folding, chemical reactions)
-  • Climate science (tipping points, extreme events)
-  • Materials science (phase transitions, nucleation)
-  • Financial mathematics (risk estimation, tail events)
+  - Molecular dynamics (protein folding, chemical reactions)
+  - Climate science (tipping points, extreme events)
+  - Materials science (phase transitions, nucleation)
+  - Financial mathematics (risk estimation, tail events)
 
 The methods implemented here represent the state-of-the-art in computational
 rare-event sampling and are actively used in research across multiple fields.

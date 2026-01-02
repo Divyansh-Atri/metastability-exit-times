@@ -1,4 +1,4 @@
-
+a
 
 import sys
 import os
@@ -39,7 +39,7 @@ def exit_condition(x):
 traj, exited = solver.simulate_until_exit(x0, exit_condition, dt, max_steps=20000, seed=42)
 
 if exited:
-    print(f"  ✓ Transition observed!")
+    print(f"  [OK] Transition observed!")
     print(f"  Exit time: {traj.times[-1]:.2f}")
     print(f"  Number of steps: {len(traj)}")
 else:
@@ -103,7 +103,7 @@ plt.tight_layout()
 # Save static figure
 static_path = '../plots/3d_transition_static.png'
 plt.savefig(static_path, dpi=300, bbox_inches='tight')
-print(f"  ✓ Static 3D figure saved: {static_path}")
+print(f"  [OK] Static 3D figure saved: {static_path}")
 print()
 
 # Create animated GIF
@@ -168,7 +168,7 @@ gif_path = '../plots/3d_transition_animation.gif'
 writer = PillowWriter(fps=20)
 anim.save(gif_path, writer=writer)
 
-print(f"  ✓ Animated GIF saved: {gif_path}")
+print(f"  [OK] Animated GIF saved: {gif_path}")
 print()
 
 # Create multiple viewing angles
@@ -208,7 +208,7 @@ plt.tight_layout()
 
 multi_path = '../plots/3d_transition_multiview.png'
 plt.savefig(multi_path, dpi=300, bbox_inches='tight')
-print(f"  ✓ Multi-angle view saved: {multi_path}")
+print(f"  [OK] Multi-angle view saved: {multi_path}")
 print()
 
 # Summary
@@ -218,23 +218,23 @@ print("="*80)
 print()
 print("Generated files:")
 print(f"  1. {static_path}")
-print(f"     → High-quality static 3D visualization")
+print(f"     - High-quality static 3D visualization")
 print()
 print(f"  2. {gif_path}")
-print(f"     → Animated GIF showing particle motion")
+print(f"     - Animated GIF showing particle motion")
 print()
 print(f"  3. {multi_path}")
-print(f"     → Multiple viewing angles")
+print(f"     - Multiple viewing angles")
 print()
 print("Trajectory statistics:")
-print(f"  • Total time: {traj.times[-1]:.2f}")
-print(f"  • Path length: {traj.trajectory_length():.2f}")
-print(f"  • Number of steps: {len(traj)}")
-print(f"  • Animation frames: {n_frames}")
+print(f"  - Total time: {traj.times[-1]:.2f}")
+print(f"  - Path length: {traj.trajectory_length():.2f}")
+print(f"  - Number of steps: {len(traj)}")
+print(f"  - Animation frames: {n_frames}")
 print()
 print("To view:")
-print("  • Open the PNG files in any image viewer")
-print("  • Open the GIF in a browser or image viewer to see animation")
+print("  - Open the PNG files in any image viewer")
+print("  - Open the GIF in a browser or image viewer to see animation")
 print()
 print("="*80)
 

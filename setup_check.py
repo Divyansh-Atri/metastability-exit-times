@@ -199,9 +199,9 @@ To install missing dependencies:
    pip install -r requirements.txt
 
 If you continue to have issues, please check:
-  • Python version is 3.8 or higher
-  • All files are in the correct locations
-  • You're running this script from the project root directory
+  - Python version is 3.8 or higher
+  - All files are in the correct locations
+  - You're running this script from the project root directory
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """)
