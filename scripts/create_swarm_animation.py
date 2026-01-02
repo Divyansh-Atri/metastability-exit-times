@@ -83,7 +83,7 @@ print("  [SUCCESS] Simulation completed. Rendering high-res video...")
 # RENDERING PIPELINE
 # =============================================================================
 # 1920x1080 resolution at 120 DPI
-fig = plt.figure(figsize=(16, 9), dpi=120) 
+fig = plt.figure(figsize=(16, 9), dpi=72) 
 ax = fig.add_subplot(111, projection='3d')
 
 # Deep charcoal background
