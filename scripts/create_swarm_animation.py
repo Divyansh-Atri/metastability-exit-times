@@ -133,7 +133,7 @@ stats_text = ax.text2D(0.02, 0.82, "", transform=ax.transAxes,
                        bbox=dict(facecolor='#1f2833', alpha=0.5, edgecolor='none', pad=5))
 
 # Status Indicator (Subtle, Top Right)
-status_indicator = ax.text2D(0.95, 0.95, "SYSTEM STABLE", transform=ax.transAxes,
+status_indicator = ax.text2D(0.95, 0.95, "System stable", transform=ax.transAxes,
                              fontsize=12, weight='bold', color='#45a29e', ha='right',
                              bbox=dict(facecolor='#1f2833', alpha=0.8, edgecolor='#45a29e', boxstyle='round,pad=0.5'))
 
@@ -221,16 +221,16 @@ def update(frame):
         energy=np.mean(energies)
     ))
     
-    if transition_count > 0:
-        status_indicator.set_text("!! TRANSITION DETECTED !!")
-        status_indicator.set_color('#ffa700')
-        status_indicator.set_bbox(dict(facecolor='#1f2833', alpha=0.9, edgecolor='#ffa700', boxstyle='round,pad=0.5'))
-    else:
-        status_indicator.set_text("SYSTEM STABLE")
-        status_indicator.set_color('#45a29e')
-        status_indicator.set_bbox(dict(facecolor='#1f2833', alpha=0.8, edgecolor='#45a29e', boxstyle='round,pad=0.5'))
+    # if transition_count > 0:
+    #     status_indicator.set_text("Transition detected")
+    #     status_indicator.set_color('#ffa700')
+    #     status_indicator.set_bbox(dict(facecolor='#1f2833', alpha=0.9, edgecolor='#ffa700', boxstyle='round,pad=0.5'))
+    # else:
+    #     status_indicator.set_text("System stable")
+    #     status_indicator.set_color('#45a29e')
+    #     status_indicator.set_bbox(dict(facecolor='#1f2833', alpha=0.8, edgecolor='#45a29e', boxstyle='round,pad=0.5'))
 
-    return [particles_scatter, particles_glow, stats_text, status_indicator] + trails
+    # return [particles_scatter, particles_glow, stats_text, status_indicator] + trails
 
 print(f"  [RENDER] Rendering {K_FRAMES} frames @ {FPS} FPS to GIF...")
 anim = FuncAnimation(fig, update, frames=K_FRAMES, interval=1000/FPS, blit=False)
